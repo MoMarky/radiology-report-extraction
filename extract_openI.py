@@ -28,6 +28,29 @@ import random
 import sys
 from pathlib import Path
 
+def extract_findings_and_impression_openi():
+    root = r"G:\Medical Reports datasets\NLMCXR_reports\ecgen-radiology"
+
+    valid_count = 0
+
+    list_writer = csv.writer(
+        open(r"G:\Medical Reports datasets\NLMCXR_reports\openi_report_sections_all.csv", 'a+', encoding='utf-8', newline=""))
+    list_writer.writerow(["ids", "finding", "impression"])
+
+    for file_name in tqdm(os.listdir(root)):
+        dom = xml.dom.minidom.parse(osp.join(root, file_name))
+        file_id = file_name.split('.')[0]
+        try:
+            cc = dom.getElementsByTagName('AbstractText')
+            c1 = cc[2]
+            finding = c1.firstChild.data
+            c1 = cc[3]
+            impression = c1.firstChild.data
+            list_writer.writerow([file_id, finding, impression])
+            valid_count += 1
+        except AttributeError:
+            continue
+
 def gen_openi_data():
     all_label_csv = open(osp.join(r"G:\Medical Reports datasets\NLMCXR_reports\openi_findings_label.csv"), "r").readlines()
 
@@ -115,6 +138,7 @@ def gen_report_and_label():
 
 
 if __name__ == '__main__':
+    # extract_findings_and_impression_openi()
     # gen_openi_data()
     gen_report_and_label()
 
