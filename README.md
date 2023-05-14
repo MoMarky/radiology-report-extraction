@@ -46,7 +46,17 @@ Find extract_mimic.py and:
 3). Run "data_clean_for_mimic()" to clean some useless sentences in the test reports, such as "The diagnosis results was communicated with Dr.__ at __."
 
 
+# Citation
 
+If you use this code, or otherwise found our work valuable, please cite:
+
+###
+    @article{ma2023impressiongpt,
+    title={ImpressionGPT: an iterative optimizing framework for radiology report summarization with chatGPT},
+    author={Ma, Chong and Wu, Zihao and Wang, Jiaqi and Xu, Shaochen and Wei, Yaonai and Liu, Zhengliang and Guo, Lei and Cai, Xiaoyan and Zhang, Shu and Zhang, Tuo and others},
+    journal={arXiv preprint arXiv:2304.08448},
+    year={2023}
+      }
 
 
 
